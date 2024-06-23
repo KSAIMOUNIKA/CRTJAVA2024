@@ -1,0 +1,59 @@
+Repeatedly find the sum of digits of a number until it becomes a single-digit number (say sod). Then compute the factorial of sod and print it.
+
+Input Format
+
+One line containing an integer "n" denoting number
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+One number denoting the factorial of single digit
+
+Sample Input 0
+
+23
+Sample Output 0
+
+120
+Explanation 0
+
+Sum of digits: 23 --> 2+3 = 5 Factorial of 5 is 120
+
+Sample Input 1
+
+99
+Sample Output 1
+
+362880
+==============================================================================
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+         while (n >= 10) {
+            n = sumOfDigits(n);
+         }
+        int fact=1;
+         for (int i = 1; i <= n; i++) {
+            fact=fact*i;
+         }
+         System.out.println(fact);
+            /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+    }
+    public static int sumOfDigits(int n) {
+        int sum = 0;
+        while(n>0){
+            sum=sum+n%10;
+            n=n/10;
+        }
+        return sum;
+    }
+
+}
