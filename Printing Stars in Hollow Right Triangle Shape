@@ -1,0 +1,65 @@
+Printing Stars in Hollow Right Triangle Shape
+
+Input Format
+
+Read n value
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+Printing Stars in Hollow Right Triangle Shape
+
+Sample Input 0
+
+5
+Sample Output 0
+
+* * * * * 
+  *     * 
+    *   * 
+      * * 
+        * 
+Sample Input 1
+
+10
+Sample Output 1
+
+* * * * * * * * * * 
+  *               * 
+    *             * 
+      *           * 
+        *         * 
+          *       * 
+            *     * 
+              *   * 
+                * * 
+                  * 
+
+========================================================================
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        int n;
+Scanner s=new Scanner(System.in);
+n=s.nextInt();
+
+         for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+           if(i==0 || i==j || j==n-1){
+               System.out.printf("* ");
+           }
+            else{
+                 System.out.printf("  ");
+            }
+        }
+         System.out.printf("\n");
+    }
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+    }
+}
