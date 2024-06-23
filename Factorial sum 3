@@ -1,0 +1,52 @@
+Write a program to find the sum of factorial of each digit in the given number.
+
+Input Format
+
+Read a number
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+Print output
+
+Sample Input 0
+
+56
+Sample Output 0
+
+840
+Sample Input 1
+
+98427
+Sample Output 1
+
+408266
+=======================================================================
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        int n,temp,sum=0;
+        Scanner s=new Scanner(System.in);
+        n=s.nextInt();
+        int d=(int)Math.log10(n)+1;
+        temp=n;
+        for(int i=0;i<d;i++){
+            int k=temp%10;
+            int fact=1;
+            while(k>=1){
+                fact=fact*k;
+                k=k-1;
+            }
+            sum=sum+fact;
+            temp=temp/10;
+     }
+        System.out.println(sum);
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+    }
+}
