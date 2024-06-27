@@ -1,7 +1,12 @@
-
+given an array of integers print the array in such a way that the 1st element is 1st maximum and second element is 1st min and so on 
+sample input:
+5
+5 1 4 7 9
+sample 0utput
+9 1 7 4 5
 ======================================================================================
 import java.util.*;
-public class{
+class edit{
 public static void main(String args[]){
 int n;
 Scanner s=new Scanner(System.in);
@@ -12,7 +17,7 @@ a[i]=s.nextInt();
 }
 Arrays.sort(a);
 for(int i=0;i<n/2;i++){
-System.out.println(a[n-1-i]+" "+a[i]+" ");
+System.out.print(a[n-1-i]+" "+a[i]+" ");
 
 }
 if(n%2==1){
