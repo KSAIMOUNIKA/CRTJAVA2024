@@ -1,0 +1,26 @@
+given an integer array arr of size n sorted in non decreasing order , return an array of the squares of each number sorted in non decreasing order
+Sample input:
+arr=[-4 ,-1 ,0,3,10]
+output:
+0 1 9 16 100
+=====================================================================================
+class Squaresofsorted{
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int a[]=new int[n];
+        int i;
+        for(i=0;i<n;i++){
+            a[i]=s.nextInt();
+        }
+        int k[]=new int[n];
+        for(i=0;i<n;i++){
+            int b=(int)Math.pow(a[i],2);
+            k[i]=b;
+        }
+        Arrays.sort(k);
+        for(i=0;i<n;i++){
+            System.out.println(k[i]);
+        }
+    }
+}
