@@ -1,0 +1,47 @@
+You are given 2 integer arrays arr1 and arr2 sorted in non decreasing order and 2 integer m and n representing the number of elements in arr1 and arr2 respectively
+merge arr1 and arr2 into a single array sorted in non decreasing order
+input:
+6
+0 1 2 3 4 7
+3 
+2 5 7
+output:
+0 1 2 2 3 4 5 7 7
+
+=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.===============================================
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        //System.out.println("Try programiz.pro");
+        int n;
+        int n1;
+        Scanner s=new Scanner(System.in);
+        n=s.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=s.nextInt();
+        }
+        n1=s.nextInt();
+        int a1[]=new int[n1];
+        for(int i=0;i<n1;i++){
+            a1[i]=s.nextInt();
+        }
+        int j=0;
+        int n2=n+n1;
+        int a2[]=new int[n2];
+        for(int i=0;i<n;i++){
+
+            a2[j]=a[i];
+         j++;
+            }
+           for(int i=0;i<n1;i++){
+                a2[j]=a1[i];
+                j++;
+           }
+        
+        Arrays.sort(a2);
+        for(int i=0;i<n2;i++){
+            System.out.println(a2[i]);
+        }
+    }
+}
