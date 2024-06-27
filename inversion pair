@@ -1,0 +1,31 @@
+The inversion pair in array A are (20,6),(20,4),(20,5),(6,4),(6,5),the count of the inversions are 5,hence the 5 is returned.
+sample input:
+7
+13 10 9 6 21 15 14
+sample output:
+9
+sample input:
+5
+1 20 6 4 5
+sample output: 5
+=====================================================================================
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+       Scanner s=new Scanner(System.in);
+       int n=s.nextInt();
+       int a[]=new int[n];
+       int count=0,i,j;
+       for(i=0;i<n;i++){
+           a[i]=s.nextInt();
+       }
+       for(i=0;i<n-1;i++){
+           for(j=i+1;j<n;j++){
+               if(a[i]>a[j]){
+                   count++;
+               }
+           }
+       }
+       System.out.println(count);
+    }
+}
