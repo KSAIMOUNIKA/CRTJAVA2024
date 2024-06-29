@@ -21,7 +21,7 @@ class NumberofRotations{
         for(i=0;i<n-1;i++){
             if(a[i+1]<a[i]){
                  System.out.println(i+1);
-                 break;
+                 return;
             }
         }
          System.out.println(0);
