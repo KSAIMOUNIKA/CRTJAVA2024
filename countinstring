@@ -1,0 +1,31 @@
+import java.util.*;
+class Test3{
+public static void main(String args[]){
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+int a=0,u=0,l=0,d=0,sy=0;
+char ch[]=s1.toCharArray();
+for(int i=0;i<s1.length();i++){
+if(Character.isLetter(ch[i])){
+a++;
+if(Character.isUpperCase(ch[i])){
+u++;
+}
+else{
+l++;
+}
+}
+else if(Character.isDigit(ch[i])){
+d++;
+}
+else{
+sy++;
+}
+}
+System.out.println("no.of alphabets:"+a);
+System.out.println("no.ofUpper case:"+u);
+System.out.println("no.of Lower case:"+l);
+System.out.println("no.of digits:"+d);
+System.out.println("no.of Symbols:"+sy);
+}
+}
