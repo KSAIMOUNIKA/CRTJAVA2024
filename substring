@@ -1,0 +1,10 @@
+import java.util.*;
+class Substring{
+    public static void main(String[] args) {
+        //System.out.println("Try programiz.pro");
+        Scanner s=new Scanner(System.in);
+       String s1="Java is best";
+       System.out.println(s1.substring(6));
+       System.out.println(s1.substring(3,8));
+    }
+}
