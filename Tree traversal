@@ -1,0 +1,105 @@
+import java.util.*;
+class Node{
+int data;
+Node left,right;
+Node(int x){
+data=x;
+left=null;
+right=null;
+}
+void insert(Node root,int x){
+Queue<Node> que=new LinkedList<>();
+que.add(root);
+while(!que.isEmpty()){
+Node temp=que.poll();
+if(temp.left==null){
+temp.left=new Node(x);
+break;
+}
+else{
+que.add(temp.left);
+if(temp.right==null){
+temp.right=new Node(x);
+break;
+}
+else{
+que.add(temp.right);
+}
+}
+}
+}
+int count(Node root){
+if(root==null)
+ return 0;
+else
+return 1+count(root.left)+count(root.right);
+}
+void printTree(Node root){
+if(root!=null){
+printTree(root.left);
+System.out.print(root.data+" ");
+printTree(root.right);
+}
+}
+
+
+void preOrder(Node root){
+if(root!=null){
+System.out.print(root.data+" ");
+preOrder(root.left);
+preOrder(root.right);
+}
+}
+void inOrder(Node root){
+if(root!=null){
+inOrder(root.left);
+System.out.print(root.data+" ");
+inOrder(root.right);
+}
+}
+void postOrder(Node root){
+if(root!=null){
+postOrder(root.left);
+postOrder(root.right);
+System.out.print(root.data+" ");
+}
+}
+}
+class treeTraversal{
+public static void main(String args[]){
+int x,k;
+Scanner s=new Scanner(System.in);
+System.out.println("Enter root node");
+int a=s.nextInt();
+Node root=new Node(a);
+while(true){
+System.out.println();
+System.out.println("1.Insert\n2.print\n3.exit\n4.count\n5.preorder\n6.inorder\n7.postorder\n");
+int ch=s.nextInt();
+if(ch==1){
+System.out.println("Enter element");
+x=s.nextInt();
+root.insert(root,x);
+}
+else if(ch==2)
+ root.printTree(root);
+else if(ch==3)
+  break;
+else if(ch==4){
+   k=root.count(root);
+   System.out.println("number of nodes:"+k);
+}
+else if(ch==5){
+ root.preOrder(root);   
+}
+else if(ch==6){
+root.inOrder(root);
+}
+else if(ch==7){
+root.postOrder(root);
+}
+else
+  System.out.println("Invalid choice");
+}
+}
+}
