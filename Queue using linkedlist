@@ -1,0 +1,102 @@
+class Node{
+int data;
+Node next;
+Node(int x){
+data=x;
+next=null;
+}
+}
+class MyQueue {
+    Node front; 
+    Node rear;  
+    int size;   
+
+    MyQueue(int n) {
+        size = n;
+        front = rear = null;
+    }
+
+    public void enqueue(int x) {
+        if (rear != null && rear.next != null) {
+            System.out.println("Queue is full");
+            return;
+        }
+
+        Node newNode = new Node(x);
+        if (front == null) {
+            front = rear = newNode;
+        } else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+    }
+
+    public int dequeue() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+
+        Node temp = front;
+        int data = temp.data;
+        front = front.next;
+
+        if (front == null) {
+            rear = null;
+        }
+
+        return data;
+    }
+
+    public void display() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        Node current = front;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;   
+
+        }
+        System.out.println();
+    }
+}
+
+public   
+ class Queue {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the size of the queue");   
+
+        int n = s.nextInt();
+
+        MyQueue queue = new MyQueue(n);
+
+        for (;;) {
+            System.out.println("1. Enqueue");
+            System.out.println("2. Dequeue");
+            System.out.println("3. Display");
+            System.out.println("4. Exit");
+
+            int choice = s.nextInt();
+
+            if (choice == 1) {
+                System.out.println("Enter an element");
+                int x = s.nextInt();
+                queue.enqueue(x);
+            } else if (choice == 2) {
+                int deleted = queue.dequeue();
+                if (deleted != -1) {
+                    System.out.println(deleted + " is deleted");
+                }
+            } else if (choice == 3) {
+                queue.display();
+            } else if (choice == 4) {
+                break;
+            } else {
+                System.out.println("Wrong choice");
+            }
+        }
+    }
