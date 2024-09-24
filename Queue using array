@@ -1,0 +1,62 @@
+import java.util.*;
+class MyQueue{
+int a[];
+int size;
+int front,rear;
+MyQueue(int n){
+front=-1;
+rear=-1;
+size=n;
+a=new int[n];
+}
+void enqueue(int x){
+if(rear==size-1){
+System.out.println("Queue is full");
+return;
+}
+rear++;
+a[rear]=x;
+}
+void dequeue(){
+if(front==rear){
+System.out.println("Queue is empty");
+return;
+}
+front++;
+System.out.println(a[front]+"is deleted");
+}
+void display(){
+if(front==rear){
+System.out.println("Queue is empty");
+return;
+}
+for(int i=front+1;i<=rear;i++)
+System.out.print(a[i]+" ");
+}
+}
+class Queue{
+public static void main(String args[]){
+Scanner s=new Scanner(System.in);
+System.out.println("Enter the size of stack");
+int n=s.nextInt();
+MyQueue s1=new MyQueue(n);
+for(;;){
+System.out.println("1.enter your choice");
+System.out.println("1.enqueue\n2.dequeue\n3.print\n4.exit");
+int ch=s.nextInt();
+if(ch==1){
+System.out.println("enter an element");
+int x=s.nextInt();
+s1.enqueue(x);
+}
+else if(ch==2)
+s1.dequeue();
+else if(ch==3)
+s1.display();
+else if(ch==4)
+break;
+else
+System.out.println("Wrong choice");
+}
+}
+}
