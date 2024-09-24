@@ -1,0 +1,256 @@
+import java.util.*;
+class Node 
+{
+ int data;
+ Node next,prev;
+ Node(int x)
+ {
+ data=x; 
+ prev=null;
+ next=null;
+ }
+}
+class CircularDoubleList
+{
+ Node head,tail;
+ CircularDoubleList()
+ {
+  head=tail=null;
+ }
+ void create(int x)
+ {
+  Node n=new Node(x);
+  if(head==null)
+  {
+   head=n;
+   head.prev=n;
+   head.next=n;
+  }
+  else
+ {
+   n.prev=head.prev;
+   n.next=head;
+   head.prev.next=n;
+   head.prev=n;
+ }
+ }
+ void rshow()
+ {
+  if(head==null)
+  {
+   System.out.println("List is empty");
+   return;
+  }
+  Node temp=head;
+  while(temp.next!=head)
+  {
+   System.out.print(temp.data+" ");
+   temp=temp.next;
+  }
+  System.out.print(temp.data);
+ }
+ void lshow()
+ {
+  if(head==null)
+  {
+   System.out.println("List is empty");
+   return;
+  }
+  Node temp=head.prev;
+  while(temp!=head)
+  {
+   System.out.print(temp.data+" ");
+   temp=temp.prev;
+  }
+  System.out.print(temp.data);
+  }
+  void insertFirst(int x)
+  {
+   Node n=new Node(x);
+   if(head==null)
+   {
+    head=n;
+    n.prev=head;
+    n.next=head;
+   }
+   else
+   {
+    n.prev=head.prev;
+    n.next=head;
+    head.prev.next=n;
+    head.prev=n;
+    head=n;
+   }
+  }
+  void insertPosition(int x,int pos)
+  {
+   Node n=new Node(x);
+   if(head==null)
+   {
+    head=n;
+    n.prev=head;
+    n.next=head;
+   }
+   else if(pos==1)
+     {
+      n.prev=head.prev;
+      n.next=head;
+      head.prev.next=n;
+      head.prev=n;
+      head=n;
+     }
+    else
+    {
+     int cnt=2;
+     Node temp=head;
+     while(cnt<pos&&temp.next!=head)
+     {
+     cnt++;
+     temp=temp.next;
+     }
+     if(temp.next==head)
+     {
+     n.prev=temp;
+     n.next=head;
+     temp.next=n;
+     head.prev=n;
+     }
+     else
+     {
+      n.prev=temp;
+      n.next=temp.next;
+      temp.next.prev=n;
+      temp.next=n;
+      }
+    }
+  }
+  void deleteFirst()
+  {
+   if(head==null)
+   {
+    System.out.println("List is empty");
+    return;
+   }
+   if(head.next==head)
+   {
+    head=null;
+   }
+   else
+   {
+    head.prev.next=head.next;
+    head.next.prev=head.prev;
+    head=head.next;
+   }
+  }
+  void deleteLast()
+  {
+   if(head==null)
+   {
+    System.out.println("List is empty");
+    return;
+   }
+   if(head.next==head)
+   {
+    head=null;
+   }
+   else
+   {
+    Node temp=head.prev;
+    head.prev=temp.prev;
+    temp.prev.next=head;
+    temp=null;
+   }
+  }
+  void deletePosition(int pos)
+  {
+   if(head==null)
+   {
+    System.out.println("List is empty");
+    return;
+   }
+   if(head.next==head)
+   {
+    head=null;
+   }
+   else
+   {
+    int cnt=2;
+    Node temp=head;
+    while(temp.next!=head&&cnt<pos)
+    {
+     temp=temp.next;
+     cnt++;
+    }
+     temp.next.prev=temp.prev;
+     temp.prev.next=temp.next;
+     temp=null;
+   }
+  }
+}
+class Cdoublylinkedlist
+{
+	public static void main(String args[])
+	{
+	  Scanner s=new Scanner(System.in);
+	  CircularDoubleList c1=new CircularDoubleList();
+	   for(;;)
+	   {
+		System.out.println();
+		System.out.println("\n1.Create\n2.Print\n3.Insert First\n4.Insert at Position\n5.Delete First\n6.Delete Last\n7.Delete at Position\n8.Exit");
+		System.out.println("Enter your choice");
+		int ch=s.nextInt();
+		if(ch==1)
+		{
+			int x;
+			System.out.println("Enter a element");
+			x=s.nextInt();
+			c1.create(x);
+		}
+		else if(ch==2)
+		{	
+			System.out.println("Which way to traverse\n1.Forward\n2.Backward");
+			int r=s.nextInt();
+			if(r==1)
+				c1.rshow();
+			else if(r==2)
+				c1.lshow();
+			else
+				System.out.println("Invalid choice");
+		}
+		else if(ch==3)
+		{
+			System.out.println("Enter an element");
+			int x=s.nextInt();
+			c1.insertFirst(x);
+		}
+		else if(ch==4)
+		{
+			System.out.println("Enter element and position");
+			int x=s.nextInt();
+			int pos=s.nextInt();
+			c1.insertPosition(x,pos);
+		}
+		else if(ch==5)
+		{
+			c1.deleteFirst();
+		}
+		else if(ch==6)
+		{
+			c1.deleteLast();
+		}
+		else if(ch==7)
+		{
+			System.out.println("Enter position");
+			int pos=s.nextInt();
+			c1.deletePosition(pos);
+		}
+
+		else if(ch==8)
+		{
+			break;
+		}
+		else 	
+			System.out.println("Wrong Choice");
+	   }
+	}
+}
